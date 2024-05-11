@@ -21,6 +21,7 @@ class StudentController extends Controller
     public function create()
     {
         //
+        return view('student.create');
     }
 
     /**
@@ -28,7 +29,18 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Create a new student record
+        $student = new Student();
+        $student->name = $request->name;
+        $student->email = $request->email;
+        $student->roll = $request->roll;
+        $student->save();
+
+        // Return a response indicating success
+        return response()->json([
+            'success' => true,
+            'message' => 'Student created successfully.',
+        ]);
     }
 
     /**
