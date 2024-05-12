@@ -44,11 +44,20 @@
                     // alert(data.res);
                     $(`#output`).text(data.message)
                     $('#save').prop('disabled', false);
+
+                    // removing valies form input feald
+                    $('#name').val('');
+                    $('#email').val('');
+                    $('#roll').val('');
                 },
                 error: (e) => {
                     // console.log(e.tesponseText);
                     $(`#output`).text(e.responseText)
                     $('#save').prop('disabled', false);
+                    // removing valies form input feald
+                    $('#name').val('');
+                    $('#email').val('');
+                    $('#roll').val('');
                 }
             })
         })

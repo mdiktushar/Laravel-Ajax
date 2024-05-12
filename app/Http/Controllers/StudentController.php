@@ -12,7 +12,18 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return Student::all();
+
+        return view('student.index');
+    }
+
+    public function students()
+    {
+        $students = Student::all();
+        return response()->json([
+            'success' => true,
+            'message' => 'All Students',
+            'students' => $students,
+        ], 200);
     }
 
     /**

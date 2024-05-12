@@ -9,3 +9,4 @@ Route::get('/', function () {
 
 
 Route::resource('student', StudentController::class);
+Route::get('all-Students', [StudentController::class, 'students'])->name('all-students');
