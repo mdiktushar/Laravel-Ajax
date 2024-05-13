@@ -12,7 +12,7 @@
 
 <body>
     <h1>Student</h1>
-    <a href={{route('student.create')}} >create</a>
+    <a href={{ route('student.create') }}>create</a>
     <table style="margin-top: 20px;" border="1" id="table">
         <tr>
             <th>#</th>
@@ -20,7 +20,7 @@
             <th>Email</th>
             <th>Roll</th>
             <th>Action</th>
-            {{-- <td><a href={{ route('student.edit', ${$data[i].id})}}>edit</a></td>     --}}
+
         </tr>
     </table>
 
@@ -42,10 +42,10 @@
                         $('#table').append(`
                         <tr>
                             <td>${data[i].id}</td>    
-                            <td>${data[i].name}</td>    
+                            <td><a href="/student/${data[i].id}/edit">${data[i].name}</a></td> 
                             <td>${data[i].email}</td>    
-                            <td>${data[i].roll}</td>    
-                            
+                            <td>${data[i].roll}</td>
+                            <td><button>Delete</button></td>
                         </tr>
                     `);
                     }

@@ -12,7 +12,7 @@
 </head>
 
 <body>
-
+    <a href={{ route('student.index') }}>Home</a>
     <form id="myform">
         @csrf
         <input type="text" name="name" placeholder="name" id="name"><br><br>
