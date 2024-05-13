@@ -12,7 +12,7 @@
 </head>
 
 <body>
-
+    <a href={{route('student.index')}}>Index</a>
     <form id="myform">
         @csrf
         <input type="text" name="name" placeholder="name" id="name"><br><br>
@@ -32,7 +32,6 @@
             let data = new FormData(form);
 
             $('#save').prop('disabled', true);
-
 
             $.ajax({
                 type: "POST",

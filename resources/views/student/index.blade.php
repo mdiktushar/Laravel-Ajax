@@ -12,13 +12,15 @@
 
 <body>
     <h1>Student</h1>
-
-    <table border="1" id="table">
+    <a href={{route('student.create')}} >create</a>
+    <table style="margin-top: 20px;" border="1" id="table">
         <tr>
             <th>#</th>
             <th>Name</th>
             <th>Email</th>
             <th>Roll</th>
+            <th>Action</th>
+            {{-- <td><a href={{ route('student.edit', ${$data[i].id})}}>edit</a></td>     --}}
         </tr>
     </table>
 
@@ -43,6 +45,7 @@
                             <td>${data[i].name}</td>    
                             <td>${data[i].email}</td>    
                             <td>${data[i].roll}</td>    
+                            
                         </tr>
                     `);
                     }
