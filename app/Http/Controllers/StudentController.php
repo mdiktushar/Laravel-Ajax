@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class StudentController extends Controller
 {
@@ -65,20 +66,33 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Student $student)
     {
         //
-        return view('student.edit');
+        return view('student.edit', compact('student'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Student $student)
     {
         //
+        try {
+            $student->update($request->all());
+            return response()->json([
+                'success' => true,
+                'message' =>'updated'
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Student update failed: ' . $e->getMessage());
+            return response()->json([
+                'success' => false,
+                'message' => "failed to update studnet",
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
-
     /**
      * Remove the specified resource from storage.
      */
