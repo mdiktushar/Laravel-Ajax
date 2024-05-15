@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -82,8 +83,8 @@ class StudentController extends Controller
             $student->update($request->all());
             return response()->json([
                 'success' => true,
-                'message' =>'updated'
-            ]);
+                'message' => 'Updated'
+            ], 200);
         } catch (\Exception $e) {
             Log::error('Student update failed: ' . $e->getMessage());
             return response()->json([
@@ -96,8 +97,22 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Student $student)
     {
         //
+        try {
+            $student->delete();
+            return response()->json([
+                'success' => true,
+                'message' => 'Deleted'
+            ], 200);
+        } catch (\Exception $e) {
+            Log::error('Student delete failed: ' . $e->getMessage());
+            return response()->json([
+                'success' => false,
+                'message' => "failed to delete studnet",
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 }
