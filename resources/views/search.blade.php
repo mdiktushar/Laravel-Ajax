@@ -28,13 +28,25 @@
                     'name': search,
                 },
                 success: (data) => {
-                    $('list').html(data);
+                    $('#list').html(data);
                 },
                 error: (error) => {
                     console.log(error);
                 }
             })
         })
+
+        // $(document).on('click', 'li', function() {
+        //     let value = $(this).text();
+        //     $('#search').val(value);
+        //     $('#list').html('');
+        // })
+
+        $(document).on('click', 'li', (event) => {
+            let value = $(event.currentTarget).text();
+            $('#search').val(value);
+            $('#list').html('');
+        });
     });
 </script>
 
